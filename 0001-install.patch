@@ -1,0 +1,48 @@
+From 8985d993383b60bcb53c07f0190ac2521fb58f67 Mon Sep 17 00:00:00 2001
+From: wjyrich <1071633242@qq.com>
+Date: Thu, 15 Aug 2024 12:35:52 +0800
+Subject: [PATCH] install
+
+---
+ CDpal.desktop   | 11 +++++++++++
+ CDpal_Multi.pro |  8 ++++++++
+ 2 files changed, 19 insertions(+)
+ create mode 100644 CDpal.desktop
+
+diff --git a/CDpal.desktop b/CDpal.desktop
+new file mode 100644
+index 0000000..66f8fcf
+--- /dev/null
++++ b/CDpal.desktop
+@@ -0,0 +1,11 @@
++[Desktop Entry]
++Categories=Accessibility;Qt;Utility;
++Exec=CDpal
++Name=CDpal
++Name[zh_CN]=CDpal
++Icon=rc_icon
++StartupNotify=false
++Terminal=false
++Type=Application
++GenericName=CDpal
++Version=2.18
+diff --git a/CDpal_Multi.pro b/CDpal_Multi.pro
+index 72abe3a..b2bf812 100644
+--- a/CDpal_Multi.pro
++++ b/CDpal_Multi.pro
+@@ -71,3 +71,11 @@ FORMS   += cdpal.ui \
+ 
+ RESOURCES += \
+            img/icon.qrc
++
++target.path = $$PREFIX/bin
++desktop.files = CDpal.desktop
++desktop.path = $$PREFIX/share/applications/
++icons.path = $$PREFIX/share/icons
++icons.files = rc_icon.png
++
++INSTALLS += target desktop icons
+\ No newline at end of file
+-- 
+2.43.4
+

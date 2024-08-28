@@ -1,0 +1,28 @@
+version: "1"
+
+package:
+  id: io.github.CDpal
+  name: CDpal
+  version: 2.13.0.1
+  kind: app
+  description: |
+    analyze protein thermal and chemical stability data monitored by CD or fluorescence spectroscopy.
+
+command:
+  - /opt/apps/io.github.CDpal/files/bin/CDpal
+
+base: org.deepin.foundation/23.0.0
+runtime: org.deepin.Runtime/23.0.1
+
+sources:
+  - kind: git
+    url: https://github.com/PINT-NMR/CDpal.git
+    version: master
+    commit: 8432804de542bf68953554cc52d327dc94d2a030
+
+build: |
+  cd /project/linglong/sources/CDpal.git
+  git apply ../../../0001-install.patch
+  qmake -makefile PREFIX=${PREFIX} LIB_INSTALL_DIR=${PREFIX}/lib/${TRIPLET}
+  make -j$(nproc)
+  make install
